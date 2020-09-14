@@ -3,16 +3,9 @@ from settings import *
 from random import randint
 from PIL import Image, ImageDraw
 
-imgwidth = 1600
-imgheight = 900
-
-freq = 300  # zoom level into the noise map
-
 # shifts the view in a random direction
 shiftx = randint(-10000, 10000)  
 shifty = randint(-10000, 10000)
-octave = 5  # Increasing gives the map higher detail
-
 
 # Creates image and prepares for drawing
 out = Image.new("RGB", (imgwidth, imgheight))
@@ -36,7 +29,7 @@ def gethighlow():
 # Get value of a coordinate and return a value between 0 and 1 (normalized thanks to gethighlow)
 def getheight(coordx, coordy):
 	coordinate = (noise.snoise2(((coordx + shiftx) / freq), ((coordy + shifty) / freq), octave) + 1) / 2
-	return ((coordinate-lo)*(1.123/hi))**1.1
+	return ((coordinate-lo)*(highweight/hi))**lowweight
 
 
 hi, lo = gethighlow()

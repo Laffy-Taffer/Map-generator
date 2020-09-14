@@ -12,3 +12,13 @@ HEIGHTS = []
 
 for c, w in [(BLUE, 7), (SAND, 1), (GREEN, 2), (BROWN, 1), (OFFWHITE, 0), (WHITE, 2)]:
     HEIGHTS += [c] * w
+
+
+imgwidth = 500
+imgheight = 500
+
+freq = 300  # zoom level into the noise map
+octave = 15  # Increasing gives the map higher detail
+
+highweight = 1.13
+lowweight = 1.1
